@@ -50,3 +50,7 @@ body{background-color:#030408;background-image:none}.prologue{background:#030408
 .site-credits{left:auto;right:18px;bottom:12px;transform:none;text-align:right}@media(max-width:700px){.site-credits{right:10px;bottom:7px}}
 /* Credits belong to the map layer, underneath the reading sidebar. */
 .site-credits{z-index:6}
+/* Both maps share identical full-height reading panel bounds. */
+#poetry-app.galaxy-mode #detail.open,#poetry-app.galaxy-mode.imagery-reading #detail.open{top:0;bottom:0;height:100%;max-height:none;box-sizing:border-box}
+/* Keep imagery and verse sidebar widths identical at every viewport size. */
+#poetry-app.galaxy-mode #detail.open,#poetry-app.galaxy-mode.imagery-reading #detail.open{width:min(420px,94vw)}
