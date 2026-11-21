@@ -57,3 +57,12 @@ body{background-color:#030408;background-image:none}.prologue{background:#030408
 /* Keep the skip action free of a focus box. */
 #skip-entrance,#skip-entrance:focus,#skip-entrance:focus-visible{border:0;outline:none;box-shadow:none}
 #skip-entrance:focus-visible{text-decoration:underline;text-underline-offset:5px;text-decoration-color:#9fb3c6}
+.full{white-space:normal;overflow-x:auto}.full .poem-line{white-space:nowrap;line-height:2.1}
+/* Only sentence boundaries create poetry lines; never wrap at a comma. */
+#detail .full .poem-line,#detail .verse h2,#detail .related p,.star-preview p{white-space:nowrap;word-break:keep-all;overflow-wrap:normal}
+#detail .verse h2,#detail .related,.star-preview{overflow-x:auto;max-width:100%}
+#detail .verse h2{font-size:20px}#detail .full{white-space:normal;overflow-x:auto}
+/* Matched excerpts retain their original half-lines; full poems group by full stop. */
+#detail .verse h2,#detail .related p,.star-preview p{white-space:normal;word-break:normal;overflow-wrap:normal}
+#detail .verse h2{font-size:23px}
+#detail .full .poem-line{white-space:nowrap}
