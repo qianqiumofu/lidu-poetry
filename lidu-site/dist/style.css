@@ -36,3 +36,17 @@ body{background-color:#030408;background-image:none}.prologue{background:#030408
 #imagery-back{top:82px;left:calc(15% + 20px);right:auto}
 .imagery-cloud:has(#imagery-back:not([hidden])) .imagery-intro{display:none}
 @media(max-width:700px){#imagery-back{top:68px;left:calc(4% + 20px);right:auto}}
+.imagery-chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.imagery-chips button{font-size:13px;padding:6px 10px}.imagery-word.selected span{color:#fff0cb;text-shadow:0 0 9px #e8c99099,0 0 25px #d5b37866}.imagery-word.selected:after{content:'';position:absolute;bottom:8px;left:43%;width:14%;height:1px;background:#d9bc87}.imagery-return{margin:8px 0 18px;font-size:12px}.imagery-reading #imagery-names{left:calc((100% - 420px)/2);width:min(57vw,68svh);height:min(57vw,68svh)}@media(max-width:900px){#poetry-app.imagery-reading #detail.open{top:54%;width:100%;height:46%;bottom:0;border-left:0;border-top:1px solid #425463;padding:18px}.imagery-reading #imagery-names{left:50%;top:29%;width:min(72vw,40svh);height:min(72vw,40svh)}.imagery-reading .imagery-intro{display:none}.imagery-reading .imagery-word{font-size:14px;padding:3px}}
+/* Imagery uses the same right-hand reading panel as the verse map. */
+@media(max-width:900px){#poetry-app.imagery-reading #detail.open{top:0;right:0;bottom:0;width:60vw;height:100%;border-top:0;border-left:1px solid #425463}.imagery-reading #imagery-names{left:20%;top:52%;width:37vw;height:37vw}.imagery-reading .imagery-word{font-size:12px;letter-spacing:1px}.imagery-reading .imagery-word small{display:none}}
+/* Opening an imagery sidebar must not reposition or resize the constellation. */
+.imagery-reading #imagery-names{left:50%;top:56%;width:min(76vw,75svh);height:min(76vw,75svh)}
+@media(max-width:700px){.imagery-reading #imagery-names{left:50%;top:54%;width:94vw;height:94vw}}
+.imagery-reading .imagery-word{font-size:var(--size);padding:16px;letter-spacing:5px}.imagery-reading .imagery-word small{display:block}
+@media(max-width:700px){.imagery-reading .imagery-word{font-size:clamp(13px,3.6vw,var(--size));padding:5px;letter-spacing:2px}.imagery-reading .imagery-word small{font-size:7px}}
+.imagery-word.selected:after{content:none;display:none}.imagery-word.selected{animation-play-state:paused;background:#b8b2a014;box-shadow:inset 0 0 0 1px #d5c49c55,0 0 14px #b6c8dc26;border-radius:3px}.imagery-word.selected small{opacity:1}
+#imagery-results .related{content-visibility:auto;contain-intrinsic-size:auto 150px}
+.site-credits{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:9;text-align:center;color:#93a3b2;font-size:10px;line-height:1.8;letter-spacing:.5px;pointer-events:none;max-width:92vw;width:max-content;opacity:.75}.site-credits span{display:block}body:has(#poem-entrance:not([hidden])) .site-credits{visibility:hidden}@media(max-width:700px){.site-credits{font-size:8px;bottom:7px;line-height:1.7;letter-spacing:0}}
+.site-credits{left:auto;right:18px;bottom:12px;transform:none;text-align:right}@media(max-width:700px){.site-credits{right:10px;bottom:7px}}
+/* Credits belong to the map layer, underneath the reading sidebar. */
+.site-credits{z-index:6}
