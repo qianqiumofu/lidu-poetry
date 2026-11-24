@@ -97,9 +97,9 @@ body{background-color:#030408;background-image:none}.prologue{background:#030408
 /* Mobile map navigation relies on touch zoom rather than buttons. */
 #poetry-app.galaxy-mode .atlas-tools{display:none!important}
 
-/* Keep controls below display cutouts, including landscape and zero-inset browsers. */
+/* Keep controls below display cutouts, including landscape; browsers with no inset keep the normal spacing. */
 :root{
- --mobile-safe-top:max(env(safe-area-inset-top,0px),32px);
+ --mobile-safe-top:env(safe-area-inset-top,0px);
  --mobile-safe-left:env(safe-area-inset-left,0px);
  --mobile-safe-right:env(safe-area-inset-right,0px);
 }
