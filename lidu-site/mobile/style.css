@@ -32,3 +32,67 @@ body{background-color:#030408;background-image:none}.prologue{background:#030408
 .collection-nav{position:absolute;right:32px;top:30px;z-index:7}.collection-nav button{padding:8px 0;color:#9697a3;border:0;border-bottom:1px solid transparent;background:none;letter-spacing:3px;font-size:14px;border-radius:0}.collection-nav button:hover{color:#fff0db;background:none}.collection-nav button:focus-visible{outline:2px solid #d6bb8b;outline-offset:5px}@media(max-width:700px){.collection-nav{right:20px;top:20px}.collection-nav button{font-size:12px}}
 #poem-entrance{position:fixed;inset:0;z-index:50;background:#0b1722;opacity:1;overflow:hidden}#poem-entrance[hidden]{display:none}#entrance-canvas{display:block;width:100%;height:100%}.entrance-caption{position:absolute;bottom:9%;left:0;width:100%;text-align:center;color:#a6b8c9;font-size:12px;letter-spacing:5px;pointer-events:none}#skip-entrance{position:absolute;right:30px;top:28px;color:#bac8d6;font-size:12px;border:0;background:transparent;letter-spacing:2px}#skip-entrance:hover{color:#fff0d5;background:#20334466}
 #poem-entrance:after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 45%,#07111a38 100%)}.entrance-caption{z-index:1;font-family:"KaiTi","STKaiti","FangSong",serif;font-size:14px;letter-spacing:7px;color:#b9c7d4;text-shadow:0 0 14px #a8c0dc33}#skip-entrance{z-index:2}
+/* Keep imagery navigation below the global tabs and collection entry. */
+#imagery-back{top:82px;left:calc(15% + 20px);right:auto}
+.imagery-cloud:has(#imagery-back:not([hidden])) .imagery-intro{display:none}
+@media(max-width:700px){#imagery-back{top:68px;left:calc(4% + 20px);right:auto}}
+.imagery-chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.imagery-chips button{font-size:13px;padding:6px 10px}.imagery-word.selected span{color:#fff0cb;text-shadow:0 0 9px #e8c99099,0 0 25px #d5b37866}.imagery-word.selected:after{content:'';position:absolute;bottom:8px;left:43%;width:14%;height:1px;background:#d9bc87}.imagery-return{margin:8px 0 18px;font-size:12px}.imagery-reading #imagery-names{left:calc((100% - 420px)/2);width:min(57vw,68svh);height:min(57vw,68svh)}@media(max-width:900px){#poetry-app.imagery-reading #detail.open{top:54%;width:100%;height:46%;bottom:0;border-left:0;border-top:1px solid #425463;padding:18px}.imagery-reading #imagery-names{left:50%;top:29%;width:min(72vw,40svh);height:min(72vw,40svh)}.imagery-reading .imagery-intro{display:none}.imagery-reading .imagery-word{font-size:14px;padding:3px}}
+/* Imagery uses the same right-hand reading panel as the verse map. */
+@media(max-width:900px){#poetry-app.imagery-reading #detail.open{top:0;right:0;bottom:0;width:60vw;height:100%;border-top:0;border-left:1px solid #425463}.imagery-reading #imagery-names{left:20%;top:52%;width:37vw;height:37vw}.imagery-reading .imagery-word{font-size:12px;letter-spacing:1px}.imagery-reading .imagery-word small{display:none}}
+/* Opening an imagery sidebar must not reposition or resize the constellation. */
+.imagery-reading #imagery-names{left:50%;top:56%;width:min(76vw,75svh);height:min(76vw,75svh)}
+@media(max-width:700px){.imagery-reading #imagery-names{left:50%;top:54%;width:94vw;height:94vw}}
+.imagery-reading .imagery-word{font-size:var(--size);padding:16px;letter-spacing:5px}.imagery-reading .imagery-word small{display:block}
+@media(max-width:700px){.imagery-reading .imagery-word{font-size:clamp(13px,3.6vw,var(--size));padding:5px;letter-spacing:2px}.imagery-reading .imagery-word small{font-size:7px}}
+.imagery-word.selected:after{content:none;display:none}.imagery-word.selected{animation-play-state:paused;background:#b8b2a014;box-shadow:inset 0 0 0 1px #d5c49c55,0 0 14px #b6c8dc26;border-radius:3px}.imagery-word.selected small{opacity:1}
+#imagery-results .related{content-visibility:auto;contain-intrinsic-size:auto 150px}
+.site-credits{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:9;text-align:center;color:#93a3b2;font-size:10px;line-height:1.8;letter-spacing:.5px;pointer-events:none;max-width:92vw;width:max-content;opacity:.75}.site-credits span{display:block}body:has(#poem-entrance:not([hidden])) .site-credits{visibility:hidden}@media(max-width:700px){.site-credits{font-size:8px;bottom:7px;line-height:1.7;letter-spacing:0}}
+.site-credits{left:auto;right:18px;bottom:12px;transform:none;text-align:right}@media(max-width:700px){.site-credits{right:10px;bottom:7px}}
+/* Credits belong to the map layer, underneath the reading sidebar. */
+.site-credits{z-index:6}
+/* Both maps share identical full-height reading panel bounds. */
+#poetry-app.galaxy-mode #detail.open,#poetry-app.galaxy-mode.imagery-reading #detail.open{top:0;bottom:0;height:100%;max-height:none;box-sizing:border-box}
+/* Keep imagery and verse sidebar widths identical at every viewport size. */
+#poetry-app.galaxy-mode #detail.open,#poetry-app.galaxy-mode.imagery-reading #detail.open{width:min(420px,94vw)}
+/* Keep the skip action free of a focus box. */
+#skip-entrance,#skip-entrance:focus,#skip-entrance:focus-visible{border:0;outline:none;box-shadow:none}
+#skip-entrance:focus-visible{text-decoration:underline;text-underline-offset:5px;text-decoration-color:#9fb3c6}
+.full{white-space:normal;overflow-x:auto}.full .poem-line{white-space:nowrap;line-height:2.1}
+/* Only sentence boundaries create poetry lines; never wrap at a comma. */
+#detail .full .poem-line,#detail .verse h2,#detail .related p,.star-preview p{white-space:nowrap;word-break:keep-all;overflow-wrap:normal}
+#detail .verse h2,#detail .related,.star-preview{overflow-x:auto;max-width:100%}
+#detail .verse h2{font-size:20px}#detail .full{white-space:normal;overflow-x:auto}
+/* Matched excerpts retain their original half-lines; full poems group by full stop. */
+#detail .verse h2,#detail .related p,.star-preview p{white-space:normal;word-break:normal;overflow-wrap:normal}
+#detail .verse h2{font-size:23px}
+#detail .full .poem-line{white-space:nowrap}
+/* Mobile navigation and bottom reading sheets; desktop remains unchanged. */
+@media(max-width:700px){
+ html,body{width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%}
+ #poetry-app.galaxy-mode .canvas-layout{height:100dvh;min-height:0}
+ .star-tabs{top:calc(env(safe-area-inset-top,0px) + 10px);left:12px;gap:8px}
+ .star-tabs button,.collection-nav button{min-height:44px;padding:10px 7px;font-size:12px;letter-spacing:1px}
+ .collection-nav{top:calc(env(safe-area-inset-top,0px) + 10px);right:10px}
+ .galaxy-mode .atlas-heading{top:calc(env(safe-area-inset-top,0px) + 80px)}
+ .atlas-heading h1{font-size:26px;letter-spacing:8px}.atlas-heading p{font-size:8px;letter-spacing:2px}.atlas-heading>span{font-size:10px;letter-spacing:2px}
+ #poetry-app.galaxy-mode #detail.open,#poetry-app.galaxy-mode.imagery-reading #detail.open{top:auto;left:0;right:0;bottom:0;width:100%;height:58dvh;max-height:calc(100dvh - env(safe-area-inset-top,0px) - 66px);border:0;border-top:1px solid #536b7d;border-radius:18px 18px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom,0px));overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:0 -12px 40px #0006;scroll-padding-top:18px}
+ #detail .close-detail{min-width:44px;min-height:44px;top:0;margin:-6px -4px 0 8px;font-size:28px;border-radius:50%;background:#152b3bf5}
+ #detail .kicker{padding-top:6px}#detail .verse{padding:18px 0}#detail .verse h2{font-size:21px}#detail .full{font-size:14px}#detail summary{min-height:42px;padding:10px 0;line-height:1.6}
+ #detail .actions{flex-wrap:wrap}#detail .actions button,#detail .imagery-return{min-height:44px}#detail .related{min-height:60px}#detail .related p{font-size:16px}
+ .imagery-intro{top:calc(env(safe-area-inset-top,0px) + 74px)}
+ #imagery-names,.imagery-reading #imagery-names{left:50%;top:51%;width:94vw;height:94vw}
+ .site-credits{bottom:calc(env(safe-area-inset-bottom,0px) + 8px);right:12px;font-size:8px;max-width:94vw}
+ #skip-entrance{top:calc(env(safe-area-inset-top,0px) + 10px);right:12px;min-height:44px;padding:10px 8px}
+ .entrance-caption{bottom:calc(env(safe-area-inset-bottom,0px) + 35px);font-size:11px;letter-spacing:3px}
+ .galaxy-mode .atlas-tools{display:flex!important;top:calc(env(safe-area-inset-top,0px) + 62px);left:12px;right:auto;bottom:auto;gap:3px;z-index:3}.galaxy-mode .atlas-tools button{min-height:38px;min-width:38px;padding:8px;background:#142635b3;font-size:11px}
+ .imagery-mode .atlas-tools{display:none!important}
+}
+@media(max-width:370px){.star-tabs{left:5px;gap:2px}.star-tabs button,.collection-nav button{font-size:11px;padding-left:5px;padding-right:5px}.collection-nav{right:5px}}
+@media(max-height:500px) and (orientation:landscape){#poetry-app.galaxy-mode #detail.open{height:100%;max-height:100%;top:0;left:auto;width:48vw;border-radius:0}.galaxy-mode .atlas-heading{top:25px}}
+/* Mobile reading panels fill the entire viewport. */
+@media(max-width:700px){
+ #poetry-app.galaxy-mode #detail.open,#poetry-app.galaxy-mode.imagery-reading #detail.open{position:fixed;inset:0;width:100%;height:100dvh;max-height:none;border:0;border-radius:0;padding:calc(env(safe-area-inset-top,0px) + 20px) 20px calc(env(safe-area-inset-bottom,0px) + 24px);z-index:20;background:#10202e;overflow-y:auto}
+ #detail .close-detail{top:0;min-width:44px;min-height:44px}
+}
+/* Mobile map navigation relies on touch zoom rather than buttons. */
+#poetry-app.galaxy-mode .atlas-tools{display:none!important}

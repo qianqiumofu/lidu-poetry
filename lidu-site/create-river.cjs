@@ -1,8 +1,0 @@
-const fs=require('fs'),p='lidu-site/river/poem-entrance.js';let s=fs.readFileSync(p,'utf8');let a=s.indexOf(' const v=ease(travel)'),b=s.indexOf(' const fade=',a);s=s.slice(0,a)+` const v=travel,depth=1.35-v*.85;
- // A broad, winding stream of verse flows across the night into the distance.
- const stream=u=>({x:(-.26+1.52*u)*w,y:(.64-.22*u+.20*Math.sin(u*Math.PI*2-.8))*h});
- const center=stream(v),near=stream(Math.min(1,v+.001)),angle=Math.atan2(near.y-center.y,near.x-center.x);
- const lane=(n(i+880)-.5)*h*(.12+.15*(1-v));
- const x=center.x-Math.sin(angle)*lane,y=center.y+Math.cos(angle)*lane;
-`+s.slice(b);s=s.replace('const scale=size/18;ctx.drawImage(sprite,x-sprite.width*scale/2,y-16*scale,sprite.width*scale,32*scale);', 'const scale=size/18;ctx.save();ctx.translate(x,y);ctx.rotate(angle*.55);ctx.drawImage(sprite,-sprite.width*scale/2,-16*scale,sprite.width*scale,32*scale);ctx.restore();');let marker='for(let i=0;i<phrases.length;i++){';s=s.replace(marker,`ctx.save();ctx.globalAlpha=(1-ease(clamp((t-13)/2)))*ease(clamp(t/3));for(let k=0;k<9;k++){ctx.beginPath();for(let j=0;j<=70;j++){const u=j/70,x=(-.26+1.52*u)*w,y=(.64-.22*u+.20*Math.sin(u*Math.PI*2-.8))*h+(k-4)*h*.018*(1-u*.55);if(j===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)}ctx.lineWidth=.5;ctx.strokeStyle=k%2?'rgba(135,180,205,.055)':'rgba(208,186,147,.045)';ctx.stroke()}ctx.restore();
-`+marker);fs.writeFileSync(p,s);const h='lidu-site/river/index.html';let html=fs.readFileSync(h,'utf8').replace('<title>一纸同心 · 李杜诗间</title>','<title>李杜诗间 · 诗句长河版</title>').replace('字句流转，汇入同一片星河','诗成江流，汇入同一片星河');fs.writeFileSync(h,html);
